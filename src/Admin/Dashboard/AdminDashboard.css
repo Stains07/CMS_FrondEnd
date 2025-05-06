@@ -1,0 +1,78 @@
+.dashboard-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
+  .dashboard-navbar {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+  }
+  
+  .dashboard-cards-container {
+    padding: 2rem 0;
+  }
+  
+  .dashboard-card {
+    border: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .dashboard-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Custom card colors */
+  .receptionist-card {
+    border-top: 4px solid #4e73df;
+  }
+  
+  .receptionist-card .dashboard-icon {
+    color: #4e73df;
+  }
+  
+  .doctor-card {
+    border-top: 4px solid #1cc88a;
+  }
+  
+  .doctor-card .dashboard-icon {
+    color: #1cc88a;
+  }
+  
+  .pharmacist-card {
+    border-top: 4px solid #36b9cc;
+  }
+  
+  .pharmacist-card .dashboard-icon {
+    color: #36b9cc;
+  }
+  
+  .labtech-card {
+    border-top: 4px solid #f6c23e;
+  }
+  
+  .labtech-card .dashboard-icon {
+    color: #f6c23e;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .dashboard-cards-container {
+      padding: 1rem;
+    }
+    
+    .dashboard-card {
+      margin-bottom: 1rem;
+    }
+  }

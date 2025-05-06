@@ -1,0 +1,154 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.backButton {
+  padding: 8px 16px;
+  background: linear-gradient(to right, #f5f5f5, #e0e0e0);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.backButton:hover {
+  background: linear-gradient(to right, #e0e0e0, #d0d0d0);
+}
+
+.appointmentCard {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid #eaeaea;
+}
+
+.appointmentHeader {
+  background: linear-gradient(to right, #f0f9ff, #e6f2ff);
+  padding: 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.appointmentDate {
+  font-weight: 600;
+  color: #333;
+}
+
+.doctorInfo {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.statusBadge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.statusCompleted {
+  background: #e6ffed;
+  color: #1a7f37;
+}
+
+.statusPending {
+  background: #fff8e6;
+  color: #b35900;
+}
+
+.section {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.sectionIcon {
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.diagnosisBox {
+  background: #f0f7ff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.medicinesTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.medicinesTable th {
+  background: #f5f5f5;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+}
+
+.medicinesTable td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.medicinesTable tr:hover {
+  background: #f9f9f9;
+}
+
+.testBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  background: #f0e6ff;
+  color: #5a2d9e;
+  margin-right: 6px;
+  margin-bottom: 6px;
+}
+
+.noData {
+  font-style: italic;
+  color: #888;
+  background: #f9f9f9;
+  padding: 12px;
+  border-radius: 8px;
+}

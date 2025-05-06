@@ -1,0 +1,152 @@
+/* AppointmentBill.css */
+
+.bill-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  .bill-header {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hospital-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .hospital-logo {
+    margin-right: 1.5rem;
+    color: #007bff;
+  }
+  
+  .hospital-details h1 {
+    color: #007bff;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .hospital-details p {
+    margin-bottom: 0.3rem;
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .bill-title {
+    text-align: center;
+    margin: 1rem 0;
+  }
+  
+  .bill-title h2 {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .bill-number {
+    font-weight: bold;
+    color: #666;
+  }
+  
+  .bill-body {
+    margin-bottom: 2rem;
+  }
+  
+  .patient-info, .appointment-details, .bill-details {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .patient-info h3, .appointment-details h3, .bill-details h3 {
+    color: #007bff;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .table {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  .table th {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .total-row {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+  
+  .payment-info {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  .footer-notes {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px dashed #ccc;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .footer-notes .terms {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+  
+  .bill-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .print-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .bill-loading, .bill-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+  }
+  
+  /* Print-specific styles */
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    .bill-container, .bill-container * {
+      visibility: visible;
+    }
+    .bill-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      padding: 20px;
+      box-shadow: none;
+    }
+    .bill-actions {
+      display: none;
+    }
+  }

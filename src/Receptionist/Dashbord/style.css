@@ -1,0 +1,52 @@
+/* @media print {
+    body * {
+        visibility: hidden;
+    }
+    .registration-card, .registration-card * {
+        visibility: visible;
+    }
+    .registration-card {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        box-shadow: none;
+    }
+} */
+
+
+/* PatientCard.css */
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    .print-container, .print-container * {
+      visibility: visible;
+    }
+    .print-container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      padding: 20px;
+    }
+    .no-print {
+      display: none !important;
+    }
+    .print-header {
+      background: #17a2b8 !important;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .print-image img {
+      border-color: #17a2b8 !important;
+    }
+    .print-footer {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+    .card {
+      box-shadow: none !important;
+      border: 1px solid #ddd !important;
+    }
+  }
