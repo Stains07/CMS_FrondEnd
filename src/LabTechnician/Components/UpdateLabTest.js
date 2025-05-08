@@ -15,7 +15,7 @@ const UpdateLabTest = () => {
     const fetchLabTest = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`http://localhost:8000/api/lab/labtests/${id}/update/`, {
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/lab/labtests/${id}/update/`, {
           headers: {
             Authorization: `Token ${token}`,
           },

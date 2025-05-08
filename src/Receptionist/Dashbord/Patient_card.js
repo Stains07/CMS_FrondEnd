@@ -22,7 +22,7 @@ const PatientCard = () => {
 
   const fetchPatient = async () => {
     try {
-      const response = await axios.get(`http://localhost:8000/api/get/patients/${patientId}/`, {
+      const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/get/patients/${patientId}/`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('access_token')}`,
         },
@@ -57,7 +57,7 @@ const PatientCard = () => {
     if (result.isConfirmed) {
       try {
         await axios.patch(
-          `http://localhost:8000/api/patients/${patientId}/${action}/`,
+          `https://blueeye10.pythonanywhere.com/api/patients/${patientId}/${action}/`,
           {},
           {
             headers: {

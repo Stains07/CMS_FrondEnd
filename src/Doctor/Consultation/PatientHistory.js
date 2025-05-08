@@ -13,7 +13,7 @@ const PatientHistory = () => {
   useEffect(() => {
     const fetchPatientHistory = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/api/patient-history/${patient_id}/`);
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/api/patient-history/${patient_id}/`);
         // Sort appointments by date (newest first)
         const sortedAppointments = response.data.appointments.sort((a, b) => 
           new Date(b.appointment_date) - new Date(a.appointment_date)

@@ -24,7 +24,7 @@ const MedicineBills = () => {
   const [editBillId, setEditBillId] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
-  const API_BASE = 'http://localhost:8000/api/pharmacy/medicinebills/';
+  const API_BASE = 'https://blueeye10.pythonanywhere.com/api/pharmacy/medicinebills/';
 
   useEffect(() => {
     fetchAllData();
@@ -48,9 +48,9 @@ const MedicineBills = () => {
 
   const fetchDropdownData = async () => {
     const [patientsRes, doctorsRes, medicinesRes] = await Promise.all([
-      axios.get('http://localhost:8000/api/pharmacy/patients/'),
-      axios.get('http://localhost:8000/api/pharmacy/doctors/'),
-      axios.get('http://localhost:8000/api/pharmacy/medicines/all/'),
+      axios.get('https://blueeye10.pythonanywhere.com/api/pharmacy/patients/'),
+      axios.get('https://blueeye10.pythonanywhere.com/api/pharmacy/doctors/'),
+      axios.get('https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/all/'),
     ]);
     setPatients(patientsRes.data);
     setDoctors(doctorsRes.data);

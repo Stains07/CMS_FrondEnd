@@ -46,7 +46,7 @@ const GenerateBill = () => {
 
         // Make API request
         const response = await axios.post(
-          "http://localhost:8000/api/pharmacy/generate-bill/",
+          "https://blueeye10.pythonanywhere.com/api/pharmacy/generate-bill/",
           billData,
           {
             headers: {

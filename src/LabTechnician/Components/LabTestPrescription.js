@@ -17,7 +17,7 @@ const LabTestPrescriptionView = () => {
     const fetchLabPrescriptions = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/lab/labtest-prescriptions/", {
+        const response = await axios.get("https://blueeye10.pythonanywhere.com/api/lab/labtest-prescriptions/", {
           headers: { Authorization: `Token ${token}` },
         });
 

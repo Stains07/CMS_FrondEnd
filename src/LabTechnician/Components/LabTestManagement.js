@@ -9,7 +9,7 @@ const ManageLabTests = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const baseURL = "http://localhost:8000/api/lab/labtests/all/";
+  const baseURL = "https://blueeye10.pythonanywhere.com/api/lab/labtests/all/";
 
   useEffect(() => {
     fetchLabTests();

@@ -26,7 +26,7 @@ const PrescriptionView = () => {
     const fetchPrescriptions = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:8000/api/pharmacy/prescriptions/", {
+        const response = await axios.get("https://blueeye10.pythonanywhere.com/api/pharmacy/prescriptions/", {
           headers: {
             Authorization: `Token ${token}`,
           },
@@ -77,7 +77,7 @@ const PrescriptionView = () => {
       }
   
       const response = await axios.post(
-        "http://localhost:8000/api/pharmacy/reduce-stock/",
+        "https://blueeye10.pythonanywhere.com/api/pharmacy/reduce-stock/",
         { items },
         {
           headers: {

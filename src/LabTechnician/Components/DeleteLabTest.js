@@ -11,7 +11,7 @@ const DeleteLabTest = () => {
     const fetchLabTest = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`http://localhost:8000/api/lab/labtests/${labTestId}/update/`, {
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/lab/labtests/${labTestId}/update/`, {
           headers: { Authorization: `Token ${token}` },
         });
         setTestName(response.data.test_name);
@@ -25,7 +25,7 @@ const DeleteLabTest = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8000/api/lab/labtests/${labTestId}/delete/`, {}, {
+      await axios.delete(`https://blueeye10.pythonanywhere.com/api/lab/labtests/${labTestId}/delete/`, {}, {
         headers: { Authorization: `Token ${token}` },
       });
       alert("Lab Test deactivated successfully");

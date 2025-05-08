@@ -9,7 +9,7 @@ const UploadTestReports = () => {
     const navigate = useNavigate();
     const [searchTerm, setSearchTerm] = useState("");
 
-    const baseURL = "http://localhost:8000/api/lab/labreports/";
+    const baseURL = "https://blueeye10.pythonanywhere.com/api/lab/labreports/";
 
     useEffect(() => {
         fetchLabReports();

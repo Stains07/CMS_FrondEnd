@@ -122,7 +122,7 @@ const PatientRegistration = () => {
     if (formData.image) formDataToSend.append('image', formData.image);
 
     try {
-      const response = await axios.post('http://localhost:8000/api/patients/', formDataToSend, {
+      const response = await axios.post('https://blueeye10.pythonanywhere.com/api/patients/', formDataToSend, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
           'Content-Type': 'multipart/form-data'

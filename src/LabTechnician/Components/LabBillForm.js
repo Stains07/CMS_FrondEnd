@@ -11,8 +11,8 @@ const LabBillForm = () => {
   const [bill, setBill] = useState(null);
   const [gst, setGst] = useState("");
 
-  const baseURL = `http://localhost:8000/api/lab/labreports/${id}/`;
-  const createBillURL = `http://localhost:8000/api/lab/labtestbills/create/`;
+  const baseURL = `https://blueeye10.pythonanywhere.com/api/lab/labreports/${id}/`;
+  const createBillURL = `https://blueeye10.pythonanywhere.com/api/lab/labtestbills/create/`;
 
   useEffect(() => {
     if (!id) {

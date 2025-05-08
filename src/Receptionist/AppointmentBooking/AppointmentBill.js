@@ -270,7 +270,7 @@ const GenerateBill = () => {
                 <div className="d-flex align-items-center gap-3 mb-3">
                   {patientDetails?.image ? (
                     <img 
-                      src={`http://localhost:8000${patientDetails.image}`} 
+                      src={`https://blueeye10.pythonanywhere.com${patientDetails.image}`} 
                       alt="Patient" 
                       className="rounded-circle"
                       style={{ width: '60px', height: '60px', objectFit: 'cover' }}

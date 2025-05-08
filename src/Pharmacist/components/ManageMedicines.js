@@ -9,7 +9,7 @@ const ManageMedicines = () => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
 
-  const baseURL = "http://localhost:8000/api/pharmacy/medicines/all/";
+  const baseURL = "https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/all/";
 
   useEffect(() => {
     fetchMedicines();
@@ -48,7 +48,7 @@ const ManageMedicines = () => {
   
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:8000/api/pharmacy/medicines/${id}/delete/`, {
+      await axios.delete(`https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/${id}/delete/`, {
         headers: { Authorization: `Token ${token}` },
       });
   

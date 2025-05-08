@@ -15,7 +15,7 @@ const UpdateMedicine = () => {
         const fetchMedicine = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get(`http://localhost:8000/api/pharmacy/medicines/${id}/`, {
+                const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/${id}/`, {
                   headers: {
                     Authorization: `Token ${token}`,
                   },
@@ -40,7 +40,7 @@ const UpdateMedicine = () => {
         e.preventDefault();
         try {
             const token = localStorage.getItem("token");
-            await axios.put(`http://localhost:8000/api/pharmacy/medicines/${id}/update/`, 
+            await axios.put(`https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/${id}/update/`, 
 
                 {
                     medicine_name: medicineName,

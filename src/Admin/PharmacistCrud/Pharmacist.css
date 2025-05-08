@@ -1,0 +1,28 @@
+/* Add to your CSS file */
+.dashboard-card {
+    transition: transform 0.2s;
+    cursor: pointer;
+  }
+  
+  .dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .pharmacist-card {
+    border-left: 4px solid #4e73df;
+  }
+  
+  .dashboard-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #4e73df;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .object-fit-cover {
+    object-fit: cover;
+  }

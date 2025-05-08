@@ -20,12 +20,12 @@ const Ordinances = () => {
   const [notification, setNotification] = useState({ show: false, message: '', type: '' });
 
   const API_ENDPOINTS = {
-    appointment: `http://127.0.0.1:8000/api/appointment/${appointment_id}/`,
-    prescription: `http://127.0.0.1:8000/api/prescription-note/${appointment_id}/`,
-    prescriptionMedicines: `http://127.0.0.1:8000/api/prescription-medicines/${appointment_id}/`,
-    medicineSearch: `http://127.0.0.1:8000/api/api/medicines/search/`,
-    listMedicines: `http://127.0.0.1:8000/api/medicines/`,
-    deleteMedicine: `http://127.0.0.1:8000/api/delete-prescription-medicine/`,
+    appointment: `https://blueeye10.pythonanywhere.com/api/appointment/${appointment_id}/`,
+    prescription: `https://blueeye10.pythonanywhere.com/api/prescription-note/${appointment_id}/`,
+    prescriptionMedicines: `https://blueeye10.pythonanywhere.com/api/prescription-medicines/${appointment_id}/`,
+    medicineSearch: `https://blueeye10.pythonanywhere.com/api/api/medicines/search/`,
+    listMedicines: `https://blueeye10.pythonanywhere.com/api/medicines/`,
+    deleteMedicine: `https://blueeye10.pythonanywhere.com/api/delete-prescription-medicine/`,
   };
 
   const [formData, setFormData] = useState({

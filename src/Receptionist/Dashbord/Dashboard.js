@@ -536,7 +536,7 @@ const DashboardLayout = ({ children }) => {
               <img
                 src={
                   receptionistData?.image
-                    ? `http://localhost:8000${receptionistData.image}`
+                    ? `https://blueeye10.pythonanywhere.com${receptionistData.image}`
                     : 'https://ui-avatars.com/api/?background=4ECDC4&color=fff&name=' + (receptionistData?.first_name || 'R')
                 }
                 alt="Receptionist"
@@ -882,7 +882,7 @@ const DashboardLayout = ({ children }) => {
                     <td className="py-2 px-2">
                       {patient.image ? (
                         <img
-                          src={`http://localhost:8000${patient.image}`}
+                          src={`https://blueeye10.pythonanywhere.com${patient.image}`}
                           alt="Patient"
                           style={{
                             width: '32px',

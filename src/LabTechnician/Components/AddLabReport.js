@@ -33,7 +33,7 @@ const AddLabReport = () => {
         }
 
         const res = await axios.get(
-          `http://localhost:8000/api/lab/labtest-prescriptions/${prescriptionId}/`,
+          `https://blueeye10.pythonanywhere.com/api/lab/labtest-prescriptions/${prescriptionId}/`,
           {
             headers: { Authorization: `Token ${token}` },
           }

@@ -15,7 +15,7 @@ const ReceptionistList = () => {
 
   const fetchReceptionists = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8000/api/get-receptionists/');
+      const response = await axios.get('https://blueeye10.pythonanywhere.com/api/get-receptionists/');
       setReceptionists(response.data);
       setLoading(false);
     } catch (error) {
@@ -58,7 +58,7 @@ const ReceptionistList = () => {
         <Avatar
           src={
             image
-              ? `http://localhost:8000${image}`
+              ? `https://blueeye10.pythonanywhere.com${image}`
               : `https://ui-avatars.com/api/?background=4ECDC4&color=fff&name=${encodeURIComponent(
                   record.first_name || 'R'
                 )}`

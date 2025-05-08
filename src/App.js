@@ -70,12 +70,14 @@ import LabBillForm from './LabTechnician/Components/LabBillForm';
 import LabReportPrintView from './LabTechnician/Components/LabReportPrintView';
 import ViewReceptionists from './Admin/ReceptionistCrud/ViewAllRecep';
 import ViewAllDoctors from './Admin/Doctor/DoctorList';
+import PharmacistList from './Admin/PharmacistCrud/Pharmacist';
 function App()
 {
   return(
     <Router>
       <Routes>
         {/* Admin */}
+        <Route path="/pharmacists" element={<PharmacistList />} />
         <Route path="/signup-doctor" element={<SignUp/>} />
         <Route path="/faculty-login" element={<FacultyLogin />} />
         <Route path="/view-receptionists" element={<ViewReceptionists/>} />

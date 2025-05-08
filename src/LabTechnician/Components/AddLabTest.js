@@ -46,7 +46,7 @@ const AddLabTest = () => {
         try {
             const token = localStorage.getItem("token");
             await axios.post(
-                "http://localhost:8000/api/lab/labtests/add/",
+                "https://blueeye10.pythonanywhere.com/api/lab/labtests/add/",
                 {
                     test_name: trimmedTestName,
                     category: trimmedCategory,

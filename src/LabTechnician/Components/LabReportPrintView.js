@@ -11,7 +11,7 @@ const LabReportPrintView = () => {
         const fetchReport = async () => {
             try {
                 const token = localStorage.getItem("token");
-                const response = await axios.get(`http://localhost:8000/api/lab/labreports/${id}/`, {
+                const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/lab/labreports/${id}/`, {
                     headers: { Authorization: `Token ${token}` },
                 });
                 setReport(response.data);

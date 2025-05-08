@@ -22,7 +22,7 @@ const PrescriptionView = ({ appointmentId, onClose }) => {
     
     const fetchPrescription = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/api/pharmacy/api/prescriptions/${appointmentId}/`);
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/pharmacy/api/prescriptions/${appointmentId}/`);
         if (response.data && response.data.length > 0) {
           setPrescription(response.data[0]); // Assuming the API returns an array
         } else {

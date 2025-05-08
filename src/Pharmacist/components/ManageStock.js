@@ -19,7 +19,7 @@ const MedicineStockManagement = () => {
     const fetchStocks = async () => {
         try {
             const token = localStorage.getItem("token");
-            const response = await axios.get('http://localhost:8000/api/pharmacy/stocks/', {
+            const response = await axios.get('https://blueeye10.pythonanywhere.com/api/pharmacy/stocks/', {
                 headers: { Authorization: `Token ${token}` }
             });
             setStocks(response.data);

@@ -25,7 +25,7 @@ const EditPatient = () => {
     useEffect(() => {
         const fetchPatient = async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/patients/${patientId}/`, {
+                const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/patients/${patientId}/`, {
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('access_token')}`
                     }
@@ -79,7 +79,7 @@ const EditPatient = () => {
         if (formData.image) formDataToSend.append('image', formData.image);
 
         try {
-            await axios.put(`http://localhost:8000/api/patients/update/${patientId}/`, formDataToSend, {
+            await axios.put(`https://blueeye10.pythonanywhere.com/api/patients/update/${patientId}/`, formDataToSend, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
                     'Content-Type': 'multipart/form-data'

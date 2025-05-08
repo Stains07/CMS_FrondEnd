@@ -1,25 +1,25 @@
 .doctor-registration-container {
     padding: 2rem 0;
-    max-width: 900px;
+    max-width: 500px;
   }
   
   .doctor-registration-card {
     border: none;
-    border-radius: 15px;
+    border-radius: 10px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     overflow: hidden;
   }
   
   .doctor-registration-card .card-header {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(135deg, #523f67 0%, #414245 100%);
     color: white;
     padding: 1.5rem;
     border-bottom: none;
   }
   
   .image-upload-container {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     margin: 0 auto;
     border: 2px dashed #ced4da;
     border-radius: 50%;
@@ -54,8 +54,9 @@
   }
   
   .form-control, .form-select {
-    border-radius: 8px;
-    padding: 0.75rem 1rem;
+    height: 35px;
+    border-radius: 5px;
+    /* padding: 0.75rem 1rem; */
     border: 1px solid #ced4da;
   }
   
@@ -65,7 +66,7 @@
   }
   
   .btn-primary {
-    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    background: linear-gradient(135deg, #3f3d41 0%, #3a4962 100%);
     border: none;
     padding: 0.75rem;
     border-radius: 8px;
@@ -73,7 +74,7 @@
   }
   
   .btn-primary:hover {
-    background: linear-gradient(135deg, #5a0cb0 0%, #1a65e8 100%);
+    background: linear-gradient(135deg, #b195d0 0%, #3a3f47 100%);
   }
   
   .btn-primary:disabled {

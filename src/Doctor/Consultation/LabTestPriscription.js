@@ -354,12 +354,12 @@ const LabTestPrescription = () => {
     const fetchPatientData = async () => {
       try {
         setIsLoading(true);
-        const response = await axios.get(`http://127.0.0.1:8000/api/appointment/${appointment_id}/`);
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/appointment/${appointment_id}/`);
         setPatientData(response.data);
         
         // Check for existing prescription
         try {
-          const prescriptionResponse = await axios.get(`http://127.0.0.1:8000/api/labtestprescriptions/appointment/${appointment_id}/`);
+          const prescriptionResponse = await axios.get(`https://blueeye10.pythonanywhere.com/api/labtestprescriptions/appointment/${appointment_id}/`);
           setExistingPrescription(prescriptionResponse.data);
           setSelectedTests(prescriptionResponse.data.tests || []);
           setNotes(prescriptionResponse.data.notes || '');
@@ -392,7 +392,7 @@ const LabTestPrescription = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/search-labtests/?search=${searchTerm}`);
+      const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/search-labtests/?search=${searchTerm}`);
       setSearchResults(response.data);
       setShowSearchResults(true);
     } catch (error) {
@@ -431,10 +431,10 @@ const LabTestPrescription = () => {
       let response;
       if (existingPrescription) {
         // Update existing prescription
-        response = await axios.put(`http://127.0.0.1:8000/api/labtestprescriptions/appointment/${appointment_id}/`, payload);
+        response = await axios.put(`https://blueeye10.pythonanywhere.com/api/labtestprescriptions/appointment/${appointment_id}/`, payload);
       } else {
         // Create new prescription
-        response = await axios.post(`http://127.0.0.1:8000/api/labtestprescriptions/appointment/${appointment_id}/`, payload);
+        response = await axios.post(`https://blueeye10.pythonanywhere.com/api/labtestprescriptions/appointment/${appointment_id}/`, payload);
       }
 
       toast.success('Lab test prescription saved successfully');
@@ -452,7 +452,7 @@ const LabTestPrescription = () => {
 
     try {
       setIsLoading(true);
-      await axios.delete(`http://127.0.0.1:8000/api/labtestprescriptions/${existingPrescription.prescription_id}/`);
+      await axios.delete(`https://blueeye10.pythonanywhere.com/api/labtestprescriptions/${existingPrescription.prescription_id}/`);
       setExistingPrescription(null);
       setSelectedTests([]);
       setNotes('');

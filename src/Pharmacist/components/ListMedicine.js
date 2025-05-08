@@ -8,7 +8,7 @@ const ListMedicines = () => {
   // Fetch all medicines on component mount
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/pharmacy/medicines/all/")  // Replace with your actual API URL
+      .get("https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/all/")  // Replace with your actual API URL
       .then((response) => {
         setMedicines(response.data);  // Set medicines state from response
       })
@@ -23,7 +23,7 @@ const ListMedicines = () => {
     
     if (confirmation) {
       axios
-        .delete(`http://localhost:8000/api/medicines/${id}/delete/`)  // Replace with your actual API URL
+        .delete(`https://blueeye10.pythonanywhere.com/api/medicines/${id}/delete/`)  // Replace with your actual API URL
         .then(() => {
           // Remove the deleted medicine from state
           setMedicines(medicines.filter((medicine) => medicine.id !== id));

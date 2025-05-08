@@ -11,7 +11,7 @@ const DeleteMedicine = () => {
     const fetchMedicine = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`http://localhost:8000/api/pharmacy/medicines/${medicineId}/`, {
+        const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/pharmacy/medicines/${medicineId}/`, {
           headers: { Authorization: `Token ${token}` },
         });
         setMedicineName(response.data.medicine_name);

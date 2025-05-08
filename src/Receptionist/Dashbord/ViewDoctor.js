@@ -13,7 +13,7 @@ const DepartmentsAndDoctors = () => {
   useEffect(() => {
     const fetchDepartments = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/api/departments/', {
+        const response = await axios.get('https://blueeye10.pythonanywhere.com/api/departments/', {
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`
           }
@@ -33,7 +33,7 @@ const DepartmentsAndDoctors = () => {
   const fetchDoctors = async (departmentId) => {
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:8000/api/departments/${departmentId}/doctors/`, {
+      const response = await axios.get(`https://blueeye10.pythonanywhere.com/api/departments/${departmentId}/doctors/`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('access_token')}`
         }

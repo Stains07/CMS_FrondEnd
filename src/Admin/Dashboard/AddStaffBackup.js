@@ -1,49 +1,36 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { 
-  Container, Form, Button, Card, Alert, 
-  Image, Row, Col, Spinner, Modal
+  Container, Form, Button, Card, Row, Col, 
+  Alert, Image, Tab, Tabs, Modal 
 } from 'react-bootstrap';
-import { FaUserMd, FaImage, FaArrowLeft, FaCheck } from 'react-icons/fa';
-import './AddDoctor.css';
+import { FaUserPlus, FaImage, FaArrowLeft } from 'react-icons/fa';
+import { MdMedicalServices, MdScience, MdPerson } from 'react-icons/md';
+import './AddStaff.css';
 
-const DoctorRegistrationForm = () => {
+const StaffRegistrationForm = () => {
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
   const [formData, setFormData] = useState({
-    doc_name: '',
-    department: '',
+    role: 'Receptionist',
+    first_name: '',
+    last_name: '',
+    name: '',
     dob: '',
     phone_number: '',
     email: '',
+    email_id: '',
+    qualification: '',
     salary: '',
-    consultation_time: '',
-    consultation_fee: '',
     image: null
   });
-  const [departments, setDepartments] = useState([]);
   const [previewImage, setPreviewImage] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [fetchingDepartments, setFetchingDepartments] = useState(true);
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
-
-  useEffect(() => {
-    // Fetch departments from API
-    const fetchDepartments = async () => {
-      try {
-        const response = await axios.get('https://blueeye10.pythonanywhere.com/api/getdepartments/');
-        setDepartments(response.data);
-        setFetchingDepartments(false);
-      } catch (err) {
-        console.error('Error fetching departments:', err);
-        setError('Failed to load departments. Please try again later.');
-        setFetchingDepartments(false);
-      }
-    };
-    fetchDepartments();
-  }, []);
+  const [newStaffId, setNewStaffId] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,24 +69,40 @@ const DoctorRegistrationForm = () => {
     try {
       const data = new FormData();
       
-      // Append all form data
-      for (const key in formData) {
-        if (formData[key] !== null && formData[key] !== '') {
-          data.append(key, formData[key]);
-        }
+      // Append common fields
+      data.append('role', formData.role);
+      data.append('phone_number', formData.phone_number);
+      data.append('qualification', formData.qualification);
+      data.append('salary', formData.salary);
+      if (formData.image) data.append('image', formData.image);
+
+      // Append role-specific fields
+      if (formData.role === 'Receptionist') {
+        data.append('first_name', formData.first_name);
+        data.append('last_name', formData.last_name);
+        data.append('email', formData.email);
+        if (formData.dob) data.append('dob', formData.dob);
+      } else {
+        data.append('name', formData.name);
+        data.append('email_id', formData.email_id);
+        if (formData.dob) data.append('dob', formData.dob);
       }
 
       const response = await axios.post(
-        'https://blueeye10.pythonanywhere.com/api/register-doctor/', 
+        'http://localhost:8000/api/register-staff/', 
         data,
         {
           headers: {
-            'Content-Type': 'multipart/form-data'
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
           }
         }
       );
 
+      setNewStaffId(response.data.id);
+      setSuccess(response.data.message);
       setShowSuccessModal(true);
+      resetForm();
     } catch (err) {
       setError(err.response?.data || 'Registration failed. Please try again.');
     } finally {
@@ -107,8 +110,32 @@ const DoctorRegistrationForm = () => {
     }
   };
 
+  const resetForm = () => {
+    setFormData({
+      role: 'Receptionist',
+      first_name: '',
+      last_name: '',
+      name: '',
+      dob: '',
+      phone_number: '',
+      email: '',
+      email_id: '',
+      qualification: '',
+      salary: '',
+      image: null
+    });
+    setPreviewImage(null);
+  };
+
+  const handleRoleChange = (role) => {
+    setFormData({
+      ...formData,
+      role
+    });
+  };
+
   return (
-    <Container className="doctor-registration-container">
+    <Container className="registration-container">
       <Button 
         variant="outline-secondary" 
         onClick={() => navigate(-1)} 
@@ -117,12 +144,28 @@ const DoctorRegistrationForm = () => {
         <FaArrowLeft className="me-2" /> Back
       </Button>
 
-      <Card className="doctor-registration-card">
+      <Card className="registration-card">
         <Card.Header className="text-center">
-          <h3><FaUserMd className="me-2" />Register New Doctor</h3>
+          <h3><FaUserPlus className="me-2" />Register New Staff</h3>
         </Card.Header>
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
+
+          <Tabs
+            activeKey={formData.role}
+            onSelect={handleRoleChange}
+            className="mb-4 role-tabs"
+          >
+            <Tab eventKey="Receptionist" title={
+              <span><MdPerson className="me-1" /> Receptionist</span>
+            } />
+            <Tab eventKey="Pharmacist" title={
+              <span><MdMedicalServices className="me-1" /> Pharmacist</span>
+            } />
+            <Tab eventKey="LabTechnician" title={
+              <span><MdScience className="me-1" /> Lab Technician</span>
+            } />
+          </Tabs>
 
           <Form onSubmit={handleSubmit}>
             <Row>
@@ -136,7 +179,7 @@ const DoctorRegistrationForm = () => {
                     <Image 
                       src={previewImage} 
                       roundedCircle 
-                      className="doctor-image-preview"
+                      className="staff-image-preview"
                     />
                   ) : (
                     <div className="image-upload-placeholder">
@@ -155,43 +198,72 @@ const DoctorRegistrationForm = () => {
               </Col>
 
               <Col md={8}>
-                <Row>
-                  <Col md={6}>
+                {/* Dynamic Fields Based on Role */}
+                {formData.role === 'Receptionist' ? (
+                  <>
+                    <Row>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>First Name *</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="first_name"
+                            value={formData.first_name}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </Form.Group>
+                      </Col>
+                      <Col md={6}>
+                        <Form.Group className="mb-3">
+                          <Form.Label>Last Name *</Form.Label>
+                          <Form.Control
+                            type="text"
+                            name="last_name"
+                            value={formData.last_name}
+                            onChange={handleInputChange}
+                            required
+                          />
+                        </Form.Group>
+                      </Col>
+                    </Row>
                     <Form.Group className="mb-3">
-                      <Form.Label>Full Name *</Form.Label>
+                      <Form.Label>Email *</Form.Label>
                       <Form.Control
-                        type="text"
-                        name="doc_name"
-                        value={formData.doc_name}
+                        type="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleInputChange}
                         required
                       />
                     </Form.Group>
-                  </Col>
-                  <Col md={6}>
+                  </>
+                ) : (
+                  <>
                     <Form.Group className="mb-3">
-                      <Form.Label>Department *</Form.Label>
-                      {fetchingDepartments ? (
-                        <Spinner animation="border" size="sm" />
-                      ) : (
-                        <Form.Select
-                          name="department"
-                          value={formData.department}
-                          onChange={handleInputChange}
-                          required
-                        >
-                          <option value="">Specialisation</option>
-                          {departments.map(dept => (
-                            <option key={dept.department_id} value={dept.department_id}>
-                              {dept.department_name}
-                            </option>
-                          ))}
-                        </Form.Select>
-                      )}
+                      <Form.Label>Full Name *</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                      />
                     </Form.Group>
-                  </Col>
-                </Row>
+                    <Form.Group className="mb-3">
+                      <Form.Label>Email *</Form.Label>
+                      <Form.Control
+                        type="email"
+                        name="email_id"
+                        value={formData.email_id}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </Form.Group>
+                  </>
+                )}
 
+                {/* Common Fields */}
                 <Row>
                   <Col md={6}>
                     <Form.Group className="mb-3">
@@ -220,54 +292,25 @@ const DoctorRegistrationForm = () => {
                 </Row>
 
                 <Form.Group className="mb-3">
-                  <Form.Label>Email *</Form.Label>
+                  <Form.Label>Qualification *</Form.Label>
                   <Form.Control
-                    type="email"
-                    name="email"
-                    value={formData.email}
+                    type="text"
+                    name="qualification"
+                    value={formData.qualification}
                     onChange={handleInputChange}
                     required
                   />
                 </Form.Group>
 
-                <Row>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Salary *</Form.Label>
-                      <Form.Control
-                        type="number"
-                        name="salary"
-                        value={formData.salary}
-                        onChange={handleInputChange}
-                        step="0.01"
-                        min="0"
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                  <Col md={6}>
-                    <Form.Group className="mb-3">
-                      <Form.Label>Consultation Fee *</Form.Label>
-                      <Form.Control
-                        type="number"
-                        name="consultation_fee"
-                        value={formData.consultation_fee}
-                        onChange={handleInputChange}
-                        step="0.01"
-                        min="0"
-                        required
-                      />
-                    </Form.Group>
-                  </Col>
-                </Row>
-
                 <Form.Group className="mb-3">
-                  <Form.Label>Consultation Time *</Form.Label>
+                  <Form.Label>Salary *</Form.Label>
                   <Form.Control
-                    type="time"
-                    name="consultation_time"
-                    value={formData.consultation_time}
+                    type="number"
+                    name="salary"
+                    value={formData.salary}
                     onChange={handleInputChange}
+                    step="0.01"
+                    min="0"
                     required
                   />
                 </Form.Group>
@@ -278,17 +321,10 @@ const DoctorRegistrationForm = () => {
               <Button 
                 variant="primary" 
                 type="submit" 
-                disabled={loading || fetchingDepartments}
+                disabled={loading}
                 size="lg"
               >
-                {loading ? (
-                  <>
-                    <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
-                    <span className="ms-2">Registering...</span>
-                  </>
-                ) : (
-                  'Register Doctor'
-                )}
+                {loading ? 'Registering...' : 'Register Staff'}
               </Button>
             </div>
           </Form>
@@ -301,10 +337,8 @@ const DoctorRegistrationForm = () => {
           <Modal.Title>Registration Successful</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Alert variant="success">
-            <FaCheck className="me-2" />
-            Doctor registered successfully. Please proceed to signup.
-          </Alert>
+          <Alert variant="success">{success}</Alert>
+          <p>Staff ID: {newStaffId}</p>
         </Modal.Body>
         <Modal.Footer>
           <Button 
@@ -317,10 +351,10 @@ const DoctorRegistrationForm = () => {
             variant="primary"
             onClick={() => {
               setShowSuccessModal(false);
-              navigate('/admin/doctors');
+              navigate(`/staff/${newStaffId}`);
             }}
           >
-            View Doctors List
+            View Profile
           </Button>
         </Modal.Footer>
       </Modal>
@@ -328,4 +362,4 @@ const DoctorRegistrationForm = () => {
   );
 };
 
-export default DoctorRegistrationForm;
+export default StaffRegistrationForm;

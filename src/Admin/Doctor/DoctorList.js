@@ -15,7 +15,7 @@ const DoctorList = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/api/get-doctors/');
+      const response = await axios.get('https://blueeye10.pythonanywhere.com/api/get-doctors/');
       setDoctors(response.data);
       setLoading(false);
     } catch (error) {
